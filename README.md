@@ -41,7 +41,7 @@ The preprocessed C file can now be translated into a assembly file. This step co
 ### How do I see the assembly of my C code?
 
 ```shell
-$ gcc -S say.c # writes say.s to the filesystem
+$ clang -S say.c # writes say.s to the filesystem
 ```
 
 ## The assembler converts assembly code to machine code (object files)
@@ -55,8 +55,8 @@ Object files also contain a symbol table, which is a list of defined and needed 
 ### How do I produce an object file?
 
 ```shell
-$ gcc -c foo.c # will create foo.o
-$ gcc -c foo.s # will create foo.o if you only have assembly
+$ clang -c foo.c # will create foo.o
+$ clang -c foo.s # will create foo.o if you only have assembly
 ```
 
 ### How can I find where a symbol is defined?
