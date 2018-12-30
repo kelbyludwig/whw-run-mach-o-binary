@@ -7,6 +7,33 @@ Build the project with:
 $ make
 ```
 
+## The preprocessor replaces directives with C source code
+
+Before a C file is compiled into assembly, it is preprocessed. This includes directives like `#define`, `#ifdef`, and `#include`.
+
+### How do I see the output of the preprocessor?
+
+```shell
+$ clang -E main.c > main-preprocessor-out.c
+```
+
+### How do I see the include search paths during compilation?
+
+Enabling clang's verbose output will include what clang is using for an include search path:
+
+```shell
+$ clang -v -c main.c
+<snip>
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/local/include
+ /Library/Developer/CommandLineTools/usr/lib/clang/10.0.0/include
+ /Library/Developer/CommandLineTools/usr/include
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/System/Library/Frameworks (framework directory)
+End of search list.
+```
+
 ## The compiler translates the C code into assembly code
 
 The preprocessed C file can now be translated into a assembly file. This step covers everything from "straightforward" C -> assembly conversation (e.g. C's `printf` to assembly's `callq _printf`) but also the more complex optimizations that you may read about in a book on compilers.
