@@ -1,4 +1,4 @@
-# What happens when you compile this program on macOS?
+# What happens when you compile and run this program on macOS?
 
 I spend too much time in Python land and always have to re-learn compiler/linker/loader/etc. terminology and workflows. These are (probably incorrect at times!) notes on the subject as well as a reference for macOS-specific tool usage I always have to look up.
 
@@ -183,6 +183,20 @@ dyld: loaded: /usr/lib/system/libcompiler_rt.dylib
 dyld: loaded: /usr/lib/libc++.1.dylib
 Hello, World!
 $ # see `man dyld` for more!
+```
+
+### How do I see my linker search paths?
+
+```shell
+$ clang -Xlinker -v
+<snip>
+configured to support archs: armv6 armv7 armv7s arm64 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em
+Library search paths:
+        /usr/local/lib
+        /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/lib
+Framework search paths:
+        /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/
+<snip>
 ```
 
 ## The loader loads the executable into memory and begins execution
